@@ -101,8 +101,6 @@ If you intend to use `ipapro` in proprietary, closed-source commercial products,
 
 A commercial license grants you the freedom to use the software without the obligations of the AGPL v3 and includes priority support.
 
-To purchase a commercial license, please contact us at: **[fulaq.dev@gmail.com](mailto:fulaq.dev@gmail.com)**
-
 ## Contributing & Support
 
 -   **Report Bugs or Request Features:** Please open an [Issue](https://github.com/fulaq/ipapro/issues) on GitHub.
