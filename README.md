@@ -5,56 +5,60 @@
 [![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-**Một công cụ mạnh mẽ, thông minh để tự động tạo file manifest (`.plist`) cho việc cài đặt Over-The-Air (OTA) trực tiếp từ một liên kết `.ipa`.**
+**A robust, intelligent utility for automatically generating manifest (`.plist`) files for Over-The-Air (OTA) installations directly from an `.ipa` link.**
 
-Được thiết kế để tối ưu hóa quy trình làm việc của nhà phát triển, `ipapro` giúp loại bỏ các bước tạo file `.plist` thủ công, dễ gây lỗi và tốn thời gian.
+Engineered to streamline developer workflows, `ipapro` eliminates the time-consuming and error-prone process of manually creating `.plist` files.
+
+![demo.gif](https://i.imgur.com/your-demo.gif)
+*(Note: Replace this link with an actual screen recording of your tool in action for maximum professional impact.)*
 
 ---
 
-## Tổng Quan (Overview)
+## Overview
 
-Việc phân phối ứng dụng iOS nội bộ (in-house) hoặc cho mục đích thử nghiệm thường yêu cầu tạo một file `.plist` để quản lý quá trình cài đặt OTA. Quá trình này đòi hỏi phải trích xuất thủ công các thông tin như `bundle-identifier`, `bundle-version` và `title` từ file `.ipa`.
+Distributing in-house or testing applications for iOS often requires a manifest `.plist` file to manage the OTA installation. This process typically involves manually extracting metadata such as the `bundle-identifier`, `bundle-version`, and `title` from the `.ipa` archive.
 
-**ipapro** tự động hóa hoàn toàn quy trình này. Nó được trang bị cơ chế fetch thông minh:
+**ipapro** fully automates this workflow. It features an adaptive fetching mechanism that intelligently chooses the best strategy:
 
-1.  **Chế độ Siêu Tốc (Ultra-fast Mode):** Cố gắng đọc metadata từ URL mà không cần tải toàn bộ file, chỉ fetch vài kilobyte dữ liệu.
-2.  **Chế độ Tin Cậy (Reliable Mode):** Nếu máy chủ không hỗ trợ chế độ nhanh, nó sẽ tự động chuyển sang chế độ tải về tiêu chuẩn để đảm bảo hoạt động thành công 100%.
+1.  **Ultra-fast Mode:** Attempts to read metadata from the remote URL by fetching only a few kilobytes of data, without downloading the entire file.
+2.  **Reliable Mode:** If the server does not support partial fetching, it seamlessly falls back to a standard download method, guaranteeing 100% success.
 
-Kết quả là một công cụ vừa nhanh như chớp, vừa ổn định tuyệt đối, giúp bạn tập trung vào việc phát triển.
+The result is a tool that is both exceptionally fast and absolutely reliable, allowing you to focus on what matters: development.
 
-## Tính Năng Nổi Bật (Key Features)
+## Key Features
 
--   🚀 **Fetch Thông Minh:** Tự động sử dụng kỹ thuật Range Request để đạt tốc độ tối đa và tự chuyển đổi nếu cần, đảm bảo hoạt động trên mọi máy chủ.
--   🧩 **Tự Động Trích Xuất Metadata:** Đọc chính xác `bundle-identifier`, `bundle-version`, và `title` trực tiếp từ file `.ipa`.
--   ⚡ **Hiệu Suất Cao:** Giảm thiểu việc sử dụng mạng và bộ nhớ, hoạt động gần như ngay lập tức đối với các máy chủ được hỗ trợ.
--   📂 **Đặt Tên File Thông Minh:** Tự động tạo file `.plist` có tên trùng khớp với file `.ipa` đầu vào để dễ dàng quản lý.
--   ⚙️ **Tối Ưu Cho Tự Động Hóa:** Hoàn hảo để tích hợp vào các quy trình CI/CD, script build và các pipeline tự động hóa khác.
--   Minimal **Dependencies:** Chỉ yêu cầu thư viện `requests`, dễ dàng cài đặt và chạy ở mọi nơi.
+-   🚀 **Adaptive Fetching:** Intelligently uses HTTP Range Requests for maximum speed and automatically falls back when necessary, ensuring universal server compatibility.
+-   🧩 **Automatic Metadata Extraction:** Accurately parses the `bundle-identifier`, `bundle-version`, and `title` directly from the IPA archive.
+-   ⚡ **High Performance:** Minimizes network and memory usage, delivering near-instant results on supported servers.
+-   📂 **Smart File Naming:** Automatically generates a `.plist` filename that matches the input `.ipa` for easy organization.
+-   ⚙️ **Built for Automation:** Perfect for integration into CI/CD pipelines, build scripts, and other automated workflows.
+-   Minimal **Dependencies:** Requires only the `requests` library for easy setup and execution anywhere.
 
-## Cài Đặt (Installation)
+## Installation
 
-1.  **Clone a Repository:**
+1.  **Clone the Repository:**
     ```bash
     git clone https://github.com/fulaq/ipapro.git
     cd ipapro
     ```
 
-2.  **Cài Đặt Thư Viện:**
+2.  **Install Dependencies:**
     ```bash
     pip install requests
     ```
+    *(Alternatively, `pip install -r requirements.txt` if you create a requirements file.)*
 
-## Sử Dụng (Usage)
+## Usage
 
-Cú pháp cực kỳ đơn giản. Chỉ cần cung cấp URL trực tiếp đến file `.ipa` của bạn.
+The syntax is clean and straightforward. Simply provide a direct URL to your signed `.ipa` file.
 
-#### **Cú pháp cơ bản:**
+#### **Basic Syntax:**
 
 ```bash
 python ipapro.py [IPA_URL]
 ```
 
-#### **Ví dụ thực tế:**
+#### **Example:**
 
 ```bash
 python ipapro.py https://github.com/Nyasami/Ksign/releases/download/v1.5/Ksign.ipa
@@ -62,7 +66,7 @@ python ipapro.py https://github.com/Nyasami/Ksign/releases/download/v1.5/Ksign.i
 
 #### **Output:**
 
-Công cụ sẽ xử lý và tạo ra một file `Ksign.plist` trong cùng thư mục với nội dung đã được điền đầy đủ.
+The tool processes the URL and generates a perfectly formatted `Ksign.plist` in the same directory.
 
 ```
 [*] Processing URL: https://github.com/Nyasami/Ksign/releases/download/v1.5/Ksign.ipa
@@ -77,30 +81,32 @@ Công cụ sẽ xử lý và tạo ra một file `Ksign.plist` trong cùng thư 
 [SUCCESS] Plist generation complete: 'Ksign.plist'
 ```
 
-#### **Tùy chọn:**
--   `-o, --output`: Chỉ định tên file output tùy chỉnh.
+#### **Options:**
+-   `-o, --output`: Specify a custom output filename.
     ```bash
     python ipapro.py [IPA_URL] -o MyAwesomeApp.plist
     ```
 
 ---
 
-## Giấy Phép (Licensing)
+## Licensing
 
-`ipapro` được phát hành theo mô hình **dual-license** (giấy phép kép).
+`ipapro` is available under a **dual-license** model.
 
-#### **Giấy Phép Cộng Đồng (AGPL v3)**
-Dành cho các dự án cá nhân, phi thương mại và các dự án nguồn mở khác, bạn có thể sử dụng `ipapro` miễn phí theo các điều khoản của **GNU Affero General Public License v3.0**.
+#### **Community License (AGPL v3)**
+For personal use, non-commercial, and open-source projects, `ipapro` is free to use under the **GNU Affero General Public License v3.0**.
 
-#### **Giấy Phép Thương Mại (Commercial License)**
-Nếu bạn muốn tích hợp `ipapro` vào các sản phẩm, dịch vụ hoặc quy trình làm việc độc quyền, có mã nguồn đóng, **bạn phải mua một giấy phép thương mại.**
+#### **Commercial License**
+If you intend to use `ipapro` in proprietary, closed-source commercial products, services, or internal workflows, **you must purchase a commercial license.**
 
-Giấy phép thương mại cho phép bạn sử dụng phần mềm mà không có các nghĩa vụ của AGPL v3 và đi kèm với hỗ trợ ưu tiên.
+A commercial license grants you the freedom to use the software without the obligations of the AGPL v3 and includes priority support.
 
-## Đóng Góp và Hỗ Trợ (Contributing & Support)
+To purchase a commercial license, please contact us at: **[fulaq.dev@gmail.com](mailto:fulaq.dev@gmail.com)**
 
--   **Báo lỗi hoặc yêu cầu tính năng:** Vui lòng tạo một [Issue](https://github.com/fulaq/ipapro/issues) trên GitHub.
--   **Tài trợ cho dự án:** Nếu công cụ này hữu ích cho bạn, hãy xem xét việc [tài trợ](https://github.com/sponsors/fulaq) để hỗ trợ cho việc bảo trì và phát triển liên tục.
+## Contributing & Support
+
+-   **Report Bugs or Request Features:** Please open an [Issue](https://github.com/fulaq/ipapro/issues) on GitHub.
+-   **Sponsor the Project:** If this tool provides value to you or your company, please consider [sponsoring its development](https://github.com/sponsors/fulaq) to support ongoing maintenance and new features.
 
 ---
 
