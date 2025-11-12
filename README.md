@@ -41,9 +41,8 @@ Kết quả là một công cụ vừa nhanh như chớp, vừa ổn định tuy
 
 2.  **Cài Đặt Thư Viện:**
     ```bash
-    pip install -r requirements.txt
+    pip install requests
     ```
-    *(Hãy tạo một file `requirements.txt` với nội dung `requests`)*
 
 ## Sử Dụng (Usage)
 
@@ -97,8 +96,6 @@ Dành cho các dự án cá nhân, phi thương mại và các dự án nguồn 
 Nếu bạn muốn tích hợp `ipapro` vào các sản phẩm, dịch vụ hoặc quy trình làm việc độc quyền, có mã nguồn đóng, **bạn phải mua một giấy phép thương mại.**
 
 Giấy phép thương mại cho phép bạn sử dụng phần mềm mà không có các nghĩa vụ của AGPL v3 và đi kèm với hỗ trợ ưu tiên.
-
-Để mua giấy phép thương mại, vui lòng liên hệ qua: **[fulaq.dev@gmail.com](mailto:fulaq.dev@gmail.com)**
 
 ## Đóng Góp và Hỗ Trợ (Contributing & Support)
 
