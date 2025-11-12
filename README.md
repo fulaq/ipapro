@@ -84,7 +84,11 @@ The tool processes the URL and generates a perfectly formatted `Ksign.plist` in 
     python ipapro.py [IPA_URL] -o MyAwesomeApp.plist
     ```
 
----
+
+Use URL Shortener with your .plist file: 
+    ```
+itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/...
+    ```
 
 ## Licensing
 
