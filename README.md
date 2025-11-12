@@ -9,9 +9,6 @@
 
 Được thiết kế để tối ưu hóa quy trình làm việc của nhà phát triển, `ipapro` giúp loại bỏ các bước tạo file `.plist` thủ công, dễ gây lỗi và tốn thời gian.
 
-![demo.gif](https://user-images.githubusercontent.com/LINK_TO_YOUR_DEMO_GIF)
-*(Lưu ý: Bạn nên tạo một file GIF demo ngắn ghi lại quá trình chạy tool và thay thế link trên)*
-
 ---
 
 ## Tổng Quan (Overview)
