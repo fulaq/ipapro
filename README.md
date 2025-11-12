@@ -9,9 +9,6 @@
 
 Engineered to streamline developer workflows, `ipapro` eliminates the time-consuming and error-prone process of manually creating `.plist` files.
 
-![demo.gif](https://i.imgur.com/your-demo.gif)
-*(Note: Replace this link with an actual screen recording of your tool in action for maximum professional impact.)*
-
 ---
 
 ## Overview
